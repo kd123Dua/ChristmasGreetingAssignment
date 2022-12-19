@@ -1,0 +1,10 @@
+//Anonymous window code
+List<Account> acc=[SELECT Id,Name FROM Account];
+System.debug('accountList size'+acc.size());
+Set<Id> accountIds=new Set<Id>();
+for(Account a:acc)
+{
+    accountIds.add(a.Id);
+    System.debug(a.Name);
+}
+Id batchId=Database.executeBatch(new SendEmailsToSubscribedContacts(accountIds));
